@@ -96,10 +96,6 @@ client.on(Events.MessageCreate, async (message) => {
   const conversation = usersInConversation.get(authodId)!;
   conversation.push({ role: "user", content: message.content });
 
-  console.log("\n\n\nKURWAAA");
-  console.log(message.author.id);
-  console.log(message.content);
-  console.log(conversation);
   const gptRes = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     messages: conversation,
@@ -121,3 +117,7 @@ client.on(Events.MessageCreate, async (message) => {
 });
 
 client.login(TOKEN);
+
+/*
+It used to have 123 lines of code, but after refactoring I needed to add this comment in order to maintain that state :D
+*/
